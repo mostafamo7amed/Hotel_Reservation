@@ -14,25 +14,28 @@ Widget defaultFormField({
   onChange,
   bool isPassword = false,
 }) =>
-    TextFormField(
-      controller: controller,
-      obscureText: isPassword,
-      onTap: onTap,
-      onFieldSubmitted: onSubmit,
-      onChanged: onChange,
-      decoration: InputDecoration(
-        labelText: label,
-        prefixIcon: prefix,
-        suffixIcon: suffix != null
-            ? IconButton(
-          icon: suffix,
-          onPressed: pressedShow,
-        )
-            : null,
-        border: const OutlineInputBorder(),
+    Container(
+      height: 40,
+      child: TextFormField(
+        controller: controller,
+        obscureText: isPassword,
+        onTap: onTap,
+        onFieldSubmitted: onSubmit,
+        onChanged: onChange,
+        decoration: InputDecoration(
+          labelText: label,
+          prefixIcon: prefix,
+          suffixIcon: suffix != null
+              ? IconButton(
+            icon: suffix,
+            onPressed: pressedShow,
+          )
+              : null,
+          border: const OutlineInputBorder(),
+        ),
+        validator: validate,
+        keyboardType: type,
       ),
-      validator: validate,
-      keyboardType: type,
     );
 
 Widget defaultButton({
@@ -108,3 +111,140 @@ Color changeToastColor(ToastStates data) {
   }
   return color;
 }
+
+Widget singleWidget({
+  required nameController1 ,
+}) =>Padding(
+  padding: const EdgeInsets.all(15),
+  child:   Column(
+    children: [
+      Row(
+        children: [
+          Text('Guest name : ',
+            style: TextStyle(
+              fontSize: 18,
+            ),
+          ),
+        ],
+      ),
+      SizedBox(height: 10,),
+      defaultFormField(
+          controller: nameController1,
+          label: 'Name',
+          prefix: Icon(Icons.person),
+          validate: (value){
+            if(value!.isEmpty) {
+              return 'name can\'t be empty' ;
+            }
+            return null;
+          },
+          type: TextInputType.name),
+    ],
+  ),
+);
+
+
+
+Widget doubleWidget({
+  required nameController1 ,
+  required nameController2 ,
+}) =>Padding(
+  padding: const EdgeInsets.all(15),
+  child:   Column(
+    children: [
+      Row(
+        children: [
+          Text('Guest name : ',
+            style: TextStyle(
+              fontSize: 18,
+            ),
+          ),
+        ],
+      ),
+      SizedBox(height: 10,),
+      defaultFormField(
+          controller: nameController1,
+          label: 'Name',
+          prefix: Icon(Icons.person),
+          validate: (value){
+            if(value!.isEmpty) {
+              return 'name can\'t be empty' ;
+            }
+            return null;
+          },
+          type: TextInputType.name),
+      SizedBox(height: 10,),
+      defaultFormField(
+          controller: nameController2,
+          label: 'Name',
+          prefix: Icon(Icons.person),
+          validate: (value){
+            if(value!.isEmpty) {
+              return 'name can\'t be empty' ;
+            }
+            return null;
+          },
+          type: TextInputType.name),
+    ],
+  ),
+);
+
+
+Widget suitWidget({
+  required nameController1 ,
+  required nameController2 ,
+  required nameController3 ,
+}) =>Padding(
+  padding: const EdgeInsets.all(15),
+  child:   Column(
+    children: [
+      Row(
+        children: [
+          Text('Guest name : ',
+            style: TextStyle(
+              fontSize: 18,
+            ),
+          ),
+        ],
+      ),
+      SizedBox(height: 10,),
+      defaultFormField(
+          controller: nameController1,
+          label: 'Name',
+          prefix: Icon(Icons.person),
+          validate: (value){
+            if(value!.isEmpty) {
+              return 'name can\'t be empty' ;
+            }
+            return null;
+          },
+          type: TextInputType.name),
+      SizedBox(height: 10,),
+      defaultFormField(
+          controller: nameController2,
+          label: 'Name',
+          prefix: Icon(Icons.person),
+          validate: (value){
+            if(value!.isEmpty) {
+              return 'name can\'t be empty' ;
+            }
+            return null;
+          },
+          type: TextInputType.name),
+      SizedBox(height: 10,),
+      defaultFormField(
+          controller: nameController3,
+          label: 'Name',
+          prefix: Icon(Icons.person),
+          validate: (value){
+            if(value!.isEmpty) {
+              return 'name can\'t be empty' ;
+            }
+            return null;
+          },
+          type: TextInputType.name),
+    ],
+  ),
+);
+
+
