@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) => HotelCubit(),
+            create: (context) => HotelCubit()..createDB()..getCurrentGuest(),
         ),
       ],
       child: BlocConsumer<HotelCubit,HotelStates>(
@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Janna',
               primarySwatch: Colors.blue,
             ),
+            debugShowCheckedModeBanner: false,
             home: HomeScreen(),
           );
         },

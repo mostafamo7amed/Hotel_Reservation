@@ -39,6 +39,8 @@ dependencies:
   fluttertoast: ^8.0.9
   conditional_builder_null_safety: ^0.0.6
   flutter_bloc: ^8.1.1
+  sqflite: ^2.0.1
+  shared_preferences: any
   bloc: ^8.1.0
   flutter_native_splash: ^2.2.9
 

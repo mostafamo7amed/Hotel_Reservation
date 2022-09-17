@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -8,6 +9,7 @@ Widget defaultFormField({
   required validate,
   required TextInputType type,
   suffix,
+  required height,
   pressedShow,
   onTap,
   onSubmit,
@@ -15,7 +17,7 @@ Widget defaultFormField({
   bool isPassword = false,
 }) =>
     Container(
-      height: 40,
+      height: height,
       child: TextFormField(
         controller: controller,
         obscureText: isPassword,
@@ -42,10 +44,11 @@ Widget defaultButton({
   required onPressed,
   required String text,
   width,
+  required height,
   bool toUpperCase = false,
 }) =>
     Container(
-      height: 45,
+      height: height,
       width: width,
       decoration: const BoxDecoration(
         borderRadius: BorderRadiusDirectional.all(Radius.circular(5)),
@@ -114,6 +117,7 @@ Color changeToastColor(ToastStates data) {
 
 Widget singleWidget({
   required nameController1 ,
+  required height,
 }) =>Padding(
   padding: const EdgeInsets.all(15),
   child:   Column(
@@ -129,6 +133,7 @@ Widget singleWidget({
       ),
       SizedBox(height: 10,),
       defaultFormField(
+          height: height,
           controller: nameController1,
           label: 'Name',
           prefix: Icon(Icons.person),
@@ -148,6 +153,7 @@ Widget singleWidget({
 Widget doubleWidget({
   required nameController1 ,
   required nameController2 ,
+  required height,
 }) =>Padding(
   padding: const EdgeInsets.all(15),
   child:   Column(
@@ -163,6 +169,7 @@ Widget doubleWidget({
       ),
       SizedBox(height: 10,),
       defaultFormField(
+          height: height,
           controller: nameController1,
           label: 'Name',
           prefix: Icon(Icons.person),
@@ -175,6 +182,7 @@ Widget doubleWidget({
           type: TextInputType.name),
       SizedBox(height: 10,),
       defaultFormField(
+          height: height,
           controller: nameController2,
           label: 'Name',
           prefix: Icon(Icons.person),
@@ -194,6 +202,7 @@ Widget suitWidget({
   required nameController1 ,
   required nameController2 ,
   required nameController3 ,
+  required height,
 }) =>Padding(
   padding: const EdgeInsets.all(15),
   child:   Column(
@@ -209,6 +218,7 @@ Widget suitWidget({
       ),
       SizedBox(height: 10,),
       defaultFormField(
+          height: height,
           controller: nameController1,
           label: 'Name',
           prefix: Icon(Icons.person),
@@ -221,6 +231,7 @@ Widget suitWidget({
           type: TextInputType.name),
       SizedBox(height: 10,),
       defaultFormField(
+        height: height,
           controller: nameController2,
           label: 'Name',
           prefix: Icon(Icons.person),
@@ -233,6 +244,7 @@ Widget suitWidget({
           type: TextInputType.name),
       SizedBox(height: 10,),
       defaultFormField(
+          height: height,
           controller: nameController3,
           label: 'Name',
           prefix: Icon(Icons.person),

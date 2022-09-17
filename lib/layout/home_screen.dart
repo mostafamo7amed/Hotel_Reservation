@@ -12,10 +12,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return BlocConsumer<HotelCubit,HotelStates>(
-      listener: (context, state) {
-
-      },
+      listener: (context, state) { },
       builder: (context, state) {
         HotelCubit cubit = HotelCubit.getCubit(context);
         return Scaffold(
@@ -30,12 +29,16 @@ class HomeScreen extends StatelessWidget {
             actions: [
               InkWell(
                 onTap: (){
-                  navigateTo(context, LoginScreen());
+                  if(cubit.isLoggedIn){
+                    cubit.changeLoggedIn();
+                  }else{
+                    navigateTo(context, LoginScreen());
+                  }
                 },
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    'Login',
+                    cubit.isLoggedIn? cubit.logout.toString():cubit.login.toString(),
                     style: TextStyle(
                       fontFamily: 'Janna',
                       fontWeight: FontWeight.bold,
@@ -90,17 +93,31 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              if (cubit.haveSale)
+                Text("You have a sale up to 95%",
+                style: TextStyle(
+                  fontSize: 16,
+                  ) ,
+                ),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     defaultButton(onPressed: (){
-                      navigateTo(context, RoomScreen());
-                    }, text: 'Rooms status'),
+                      if(cubit.isLoggedIn){
+                        navigateTo(context, RoomScreen());
+                      }else{
+                        toast(message: 'You can\'t view rooms until login', data: ToastStates.warning);
+                      }
+                    }, text: 'Rooms status', height: size.height*0.07),
                     const SizedBox(width: 10,),
                     defaultButton(onPressed: (){
-                      navigateTo(context, BookingScreen());
-                    }, text: 'Book a room'),
+                      if(cubit.isLoggedIn){
+                        navigateTo(context, BookingScreen());
+                      }else{
+                        toast(message: 'You can\'t book a room until login', data: ToastStates.warning);
+                      }
+                    }, text: 'Book a room', height: size.height*0.07),
                   ],
                 ),
               ),
