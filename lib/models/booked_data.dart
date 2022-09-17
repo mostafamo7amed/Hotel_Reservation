@@ -6,11 +6,15 @@ class BookedRoomData{
   double cost;
   int databaseId;
   Room room;
+  String from;
+  String to;
   BookedRoomData({
     required this.roomType,
     required this.guests,
     required this.cost,
     required this.databaseId,
     required this.room,
+    required this.from,
+    required this.to,
 });
 }

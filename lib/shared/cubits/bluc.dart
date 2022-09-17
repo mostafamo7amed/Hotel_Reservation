@@ -13,13 +13,30 @@ class HotelCubit extends Cubit<HotelStates> {
   static HotelCubit getCubit(context) => BlocProvider.of(context);
 
 
+  List<Map<String, Object>> branchesData = [
+    {"branch": "Cairo", "rate": 5, "image":"one"},
+    {"branch": "Giza", "rate": 4, "image":"two"},
+    {"branch": "Minya", "rate": 7, "image":"three"},
+    {"branch": "Sohag", "rate": 5, "image":"four"},
+    {"branch": "Alix", "rate": 4, "image":"five"},
+    {"branch": "Loxur", "rate": 7, "image":"six"},
+    {"branch": "Aswan", "rate": 7, "image":"seven"},
+    {"branch": "Sharm Elshikh", "rate": 5, "image":"eight"},
+    {"branch": "Hurghada", "rate": 7, "image":"nine"},
+    {"branch": "Gona", "rate": 7, "image":"teen"},
+  ];
 
-  List<String> branch = ['Cairo' , 'Minya' , 'Sohag' , 'Alix'];
   String? branchSelected = 'Cairo';
+  String? branchImageSelected = 'one';
 
   void selectedBranch(String item){
     branchSelected = item;
     emit(HotelBranchSelectedState());
+  }
+
+  void selectedImageBranch(String item){
+    branchImageSelected = item;
+    emit(HotelBranchImageSelectedState());
   }
 
 
@@ -72,7 +89,7 @@ class HotelCubit extends Cubit<HotelStates> {
 
   //save guest who booked only in the datatbase
   saveNewGuestDatabase() {
-    dBHelper.insertNewGuest(currentGuest).then((value) {
+    dBHelper.insertNewGuest(currentGuest ).then((value) {
       rooms = value;
       emit(HotelAddGustsSuccessState());
     }).catchError((error) {

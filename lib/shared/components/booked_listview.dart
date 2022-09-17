@@ -52,6 +52,15 @@ class BookedListView extends StatelessWidget {
                         ), //
                       ),
                     ),
+                    Text("Date:", style: TextStyle(
+                      fontSize: 18,
+                    ),),
+                    Text("from: ${bookedRooms[index].from}", style: TextStyle(
+                      fontSize: 18,
+                    ),),
+                    Text("to: ${bookedRooms[index].to}", style: TextStyle(
+                      fontSize: 18,
+                    ),),
                   ],
                 ),
               ),

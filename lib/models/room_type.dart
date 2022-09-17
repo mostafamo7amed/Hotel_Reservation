@@ -1,5 +1,5 @@
 class RoomType{
-  String singleRoom = "single";
-  String doubleRoom = "double";
-  String suitRoom = "suit";
+  String singleRoom = "Single";
+  String doubleRoom = "Double";
+  String suitRoom = "Suit";
 }

@@ -34,3 +34,5 @@ class HotelUpdateBookedListState extends HotelStates{}
 class HotelClearBookedListState extends HotelStates{}
 
 class HotelUpdateAllCostState extends HotelStates{}
+
+class HotelBranchImageSelectedState extends HotelStates{}

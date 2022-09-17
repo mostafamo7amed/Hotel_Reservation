@@ -3,8 +3,18 @@ import '../../models/room_type.dart';
 
 RoomType roomType = RoomType();
 //let suggesting we have 3 branches / locations
-const branchesData = ['Cairo' , 'Minya' , 'Sohag' , 'Alix' ];
-// and let every branch have 6 rooms
+const branchesData = [
+  {"branch": "Cairo", "rate": 5, "image":"one"},
+  {"branch": "Giza", "rate": 4, "image":"two"},
+  {"branch": "Minya", "rate": 7, "image":"three"},
+  {"branch": "Sohag", "rate": 5, "image":"four"},
+  {"branch": "Alix", "rate": 4, "image":"five"},
+  {"branch": "Loxur", "rate": 7, "image":"six"},
+  {"branch": "Aswan", "rate": 7, "image":"seven"},
+  {"branch": "Sharm Elshikh", "rate": 5, "image":"eight"},
+  {"branch": "Hurghada", "rate": 7, "image":"nine"},
+  {"branch": "Gona", "rate": 7, "image":"teen"},
+];// and let every branch have 6 rooms
 List roomsData = [
   {"branch":"","room_number":1,"booked":false,"type":"${roomType.singleRoom.toString()}","guest":"","cost":300,"bookfrom":"","bookto":""},
   {"branch":"","room_number":2,"booked":false,"type":"${roomType.singleRoom.toString()}","guest":"","cost":300,"bookfrom":"","bookto":""},

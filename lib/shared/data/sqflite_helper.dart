@@ -25,7 +25,7 @@ class DbHelper {
     });
     //create table for all guest who booked before
     await database.execute(
-        'CREATE TABLE IF NOT EXISTS guests ( guest TEXT)');
+        'CREATE TABLE IF NOT EXISTS guests (guest TEXT)');
 
     //create table for rooms
       await database.execute(
@@ -34,19 +34,23 @@ class DbHelper {
       // insert branches and rooms in database for the first time only
     if( preferences.getBool("isSavedBefore") == null){
       //insert branches
-      for(String branchN in branchesData){
+      branchesData.forEach((element) async {
         await database.transaction((txn) async{
-          txn.rawInsert('INSERT INTO branches (name) VALUES ("$branchN")');
+          txn.rawInsert('INSERT INTO branches (name) VALUES ("${element['branch']}")');
         });
-      }
+      });
+
+
       //insert rooms for every branch
-      for(String branchN in branchesData){
+      branchesData.forEach((element) async {
         for(var r in roomsData){
           await database.transaction((txn) async{
-            txn.rawInsert('INSERT INTO rooms (branch, room_number, booked, type, guest, cost, bookfrom, bookto) VALUES ("$branchN", ${r['room_number']},"${r['booked']}","${r['type']}","${r['guest']}",${r['cost']},"${r['bookfrom']}", "${r['bookto']}")');
+            txn.rawInsert('INSERT INTO rooms (branch, room_number, booked, type, guest, cost, bookfrom, bookto) VALUES ("${element['branch']}", ${r['room_number']},"${r['booked']}","${r['type']}","${r['guest']}",${r['cost']},"${r['bookfrom']}", "${r['bookto']}")');
           });
         }
-      }
+      });
+
+
       preferences.setBool("isSavedBefore",true);
     }
   }
