@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel/shared/cubits/bluc.dart';
 import 'package:hotel/shared/cubits/states.dart';
 
-import '../shared/observer/blocObserver.dart';
-import 'home_screen.dart';
+import 'shared/observer/blocObserver.dart';
+import 'layout/home_screen.dart';
 
 void main() {
   Bloc.observer = MyBlocObserver();

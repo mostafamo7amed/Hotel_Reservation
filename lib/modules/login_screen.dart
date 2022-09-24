@@ -73,22 +73,6 @@ class LoginScreen extends StatelessWidget {
                         const SizedBox(
                           height: 15.0,
                         ),
-                        defaultFormField(
-                          height: 45.0,
-                          label: 'Phone',
-                          prefix: const Icon(Icons.phone),
-                          controller: phoneController,
-                          validate: (value) {
-                            if (value!.isEmpty) {
-                              return 'email can\'t be empty';
-                            }
-                            return null;
-                          },
-                          type: TextInputType.emailAddress,
-                        ),
-                        const SizedBox(
-                          height: 20.0,
-                        ),
                         Container(
                           width: double.infinity,
                           height: 45,
